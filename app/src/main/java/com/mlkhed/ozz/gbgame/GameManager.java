@@ -78,18 +78,22 @@ public class GameManager {
         for (EnemyCircle circle : circles) {
             if (mainCircle.isIntersectWith(circle)) {
                 if (circle.isSmallerThan(mainCircle)) {
-                    mainCircle.Grow(circle);
+                    mainCircle.growUp(circle);
                     circleForDelet = circle;
                     calculateAndSetCirclesColor();
                     break;
                 } else {
-                    gameEnd("OUCH!!!!");
-                    return;
+                    mainCircle.growDown(circle);
+                    circleForDelet = circle;
+                    calculateAndSetCirclesColor();
+                    //gameEnd("OUCH!!!!");
+                    //return;
                 }
             }
         }
         if (circleForDelet != null) circles.remove(circleForDelet);
         if (circles.isEmpty()) gameEnd("DONE!!");
+        if (mainCircle.radius < 1) gameEnd("OUCH!!!!");
     }
 
     private void gameEnd(String text) {

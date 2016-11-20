@@ -1,8 +1,6 @@
 package com.mlkhed.ozz.gbgame;
 
-import android.content.Context;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 
 
 /**
@@ -13,7 +11,8 @@ public class MainCircle extends SimpleCircle {
     public static final int INIT_RADIUS = 50;
     public static final int MAIN_SPEED = 81;
     public static final int MAIN_COLOR = Color.rgb(0, 170, 255);
-    public static final double GROW_SPEED_SLOWER = 2;
+    public static final double GROWUP_SPEED_SLOWER = 5;
+    public static final double GROWDOWN_SPEED_SLOWER = 10;
 
 
     public MainCircle(int x, int y) {
@@ -32,9 +31,14 @@ public class MainCircle extends SimpleCircle {
         radius = INIT_RADIUS;
     }
 
-    public void Grow(SimpleCircle circle) {
+    public void growUp(SimpleCircle circle) {
         //новая площадь круга равноа сумме предыдущих плащадей отсюда радиус нового круга равен pi* Rnew^2 = pi* Rold^2 + pi* Reat^2
-        radius = radius + (int) ((Math.sqrt(Math.pow(radius, 2) + Math.pow(circle.radius, 2))) / 5);
+        radius += (int) ((Math.sqrt(Math.pow(radius, 2) + Math.pow(circle.radius, 2))) / GROWUP_SPEED_SLOWER);
+    }
+
+    public void growDown(SimpleCircle circle) {
+        //уменьшаем круг на столько насколько напавший круг больше
+        radius -= (int) ((Math.sqrt(Math.pow(radius, 2) + Math.pow(circle.radius, 2))) / GROWDOWN_SPEED_SLOWER);;
     }
 }
 
