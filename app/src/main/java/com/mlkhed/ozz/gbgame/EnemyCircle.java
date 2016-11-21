@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class EnemyCircle extends SimpleCircle {
 
-    public static final int MIN_RADIUS = 70; //делитель миниммального радиуса, радиус = ширине экрана / делитель
+    public static final int MIN_RADIUS = 40; //делитель миниммального радиуса, радиус = ширине экрана / делитель
     public static final int MAX_RADIUS = 10; //делитель максимального радиуса
 
     public static final int FOOD_COLOR = Color.rgb(125, 255, 0);

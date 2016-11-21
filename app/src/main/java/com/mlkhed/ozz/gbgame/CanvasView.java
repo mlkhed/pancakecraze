@@ -2,7 +2,6 @@ package com.mlkhed.ozz.gbgame;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
@@ -24,6 +23,7 @@ public class CanvasView extends View implements iCanvasView {
     private Paint paint;
     private Canvas canvas;
     private Toast toast;
+    private Toast countToast;
 
     public CanvasView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -73,6 +73,14 @@ public class CanvasView extends View implements iCanvasView {
         //toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
 
+    }
+
+    @Override
+    public void showCount(int count) {
+        if (countToast != null) countToast.cancel();
+        countToast = Toast.makeText(getContext(), String.valueOf(count), Toast.LENGTH_SHORT);
+        countToast.setGravity(Gravity.TOP,0,20);
+        countToast.show();
     }
 
     @Override

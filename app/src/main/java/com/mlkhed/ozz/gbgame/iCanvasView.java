@@ -10,4 +10,6 @@ public interface iCanvasView {
     void redraw();
 
     void showMessage(String text);
+
+    void showCount(int count);
 }
