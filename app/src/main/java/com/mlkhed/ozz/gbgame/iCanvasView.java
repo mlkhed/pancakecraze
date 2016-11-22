@@ -15,5 +15,5 @@ public interface iCanvasView {
 
     void showCount(int count);
 
-    void equalColor();
+    boolean noMoreFood();
 }

@@ -96,9 +96,9 @@ public class GameManager {
             }
         }
         if (circleForDelet != null) circles.remove(circleForDelet);
-        if (circles.isEmpty()) gameEnd("DONE!!");
-        canvasView.equalColor();
-        if (mainCircle.radius < GameManager.getWidth()/EnemyCircle.MIN_RADIUS) gameEnd("OUCH!!!!");
+        if (circles.isEmpty()) gameEnd("WIN!");
+        if (canvasView.noMoreFood()) gameEnd("NO MORE FOOD!");
+        if (mainCircle.radius < GameManager.getWidth()/EnemyCircle.MIN_RADIUS) gameEnd("FAIL");
     }
 
     protected void gameEnd(String text) {
@@ -117,6 +117,9 @@ public class GameManager {
 }
 
 
-//// TODO: 21/11/16 если выполнится проверка, то пусть шар зальет весь экран своим цветом. а потом гейменд()
-//// TODO: 21/11/16 speedtest : на место изсчезнувших кругов, инициализируется новый. главный растет только до определенного размера потом сбрасывается, и счетчик считает +1 и прибавляет скорость.
-//// TODO: 21/11/16 agilitytest : режим сурвайвл - плотность растет с каждым столкновением. удаляем один прибавляем 2.
+// TODO: 22/11/16 все фичи в отдельные ветки гита
+// TODO: 21/11/16 если выполнится проверка, то пусть шар зальет весь экран своим цветом. а потом гейменд()
+// TODO: 21/11/16 speedtest : на место изсчезнувших кругов, инициализируется новый. главный растет только до определенного размера потом сбрасывается, и счетчик считает +1 и прибавляет скорость.
+// TODO: 21/11/16 agilitytest : режим сурвайвл - плотность растет с каждым столкновением. удаляем один прибавляем 2.
+// TODO: 22/11/16 сделать эффект перетекания массы из шара в шар.
+// TODO: 22/11/16 натянуть на шары картинки.
