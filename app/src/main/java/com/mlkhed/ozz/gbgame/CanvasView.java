@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * Created by ozz on 13/11/16.
  */
@@ -81,6 +83,18 @@ public class CanvasView extends View implements iCanvasView {
         countToast = Toast.makeText(getContext(), String.valueOf(count), Toast.LENGTH_SHORT);
         countToast.setGravity(Gravity.TOP,0,20);
         countToast.show();
+    }
+
+    @Override
+    public void equalColor() {
+        int enemyCount = 0;
+        int foodCount = 0;
+        for (EnemyCircle circle : gameManager.circles) {
+            if (circle.color == EnemyCircle.ENEMY_COLOR) enemyCount++;
+            if (circle.color == EnemyCircle.FOOD_COLOR) foodCount++;
+        }
+        if (enemyCount == gameManager.circles.size()) gameManager.gameEnd("Gotcha!!!");
+        //if (foodCount == gameManager.circles.size()) gameManager.gameEnd("Kill'em All!!");
     }
 
     @Override

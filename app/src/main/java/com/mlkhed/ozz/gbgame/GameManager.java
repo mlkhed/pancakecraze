@@ -10,7 +10,7 @@ public class GameManager {
 
     public static final int MAX_CIRCLES = 20;
     private MainCircle mainCircle;
-    private ArrayList<EnemyCircle> circles;
+    protected ArrayList<EnemyCircle> circles;
     private CanvasView canvasView;
     private static int width;
     private static int height;
@@ -82,28 +82,31 @@ public class GameManager {
                     mainCircle.growUp(circle);
                     circleForDelet = circle;
                     calculateAndSetCirclesColor();
+                    break;
                 } else {
                     mainCircle.growDown(circle);
                     circleForDelet = circle;
                     calculateAndSetCirclesColor();
+                    break;
                     //gameEnd("OUCH!!!!");
                     //return;
                 }
-                count++;
-                canvasView.showCount(count);
+                //count++;
+                //canvasView.showCount(count);
             }
         }
         if (circleForDelet != null) circles.remove(circleForDelet);
         if (circles.isEmpty()) gameEnd("DONE!!");
+        canvasView.equalColor();
         if (mainCircle.radius < GameManager.getWidth()/EnemyCircle.MIN_RADIUS) gameEnd("OUCH!!!!");
     }
 
-    private void gameEnd(String text) {
+    protected void gameEnd(String text) {
         canvasView.showMessage(text);
         mainCircle.initRadius();
         initEnemyCircles();
         canvasView.redraw();
-        count = 0;
+        //count = 0;
     }
 
     private void moveCircle() {
@@ -113,8 +116,7 @@ public class GameManager {
     }
 }
 
-//// TODO: 21/11/16 проверку всех шаров, если все зеленые или если все красные.
+
 //// TODO: 21/11/16 если выполнится проверка, то пусть шар зальет весь экран своим цветом. а потом гейменд()
-//// TODO: 21/11/16 пусть выводится количество съеденных кругов.
-//// TODO: 21/11/16 на место изсчезнувших кругов, инициализируется новый. главный растет только до определенного размера потом сбрасывается, и счетчик считает +1 и прибавляет скорость.
-//// TODO: 21/11/16 режим сурвайвл - плотность растет с каждым столкновением. удаляем один прибавляем 2.
+//// TODO: 21/11/16 speedtest : на место изсчезнувших кругов, инициализируется новый. главный растет только до определенного размера потом сбрасывается, и счетчик считает +1 и прибавляет скорость.
+//// TODO: 21/11/16 agilitytest : режим сурвайвл - плотность растет с каждым столкновением. удаляем один прибавляем 2.
